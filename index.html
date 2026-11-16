@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find trusted artisans and estimate home repair and installation costs in Nigeria.">
+  <title>Workman Nigeria | Get the job done</title>
+  <style>
+    :root{--ink:#17231d;--green:#146b45;--lime:#d7f36a;--paper:#f6f7f2;--muted:#68736c;--line:#e2e7df}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--paper);color:var(--ink)}
+    header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+    .nav{max-width:1120px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-weight:900;font-size:1.35rem;letter-spacing:-.7px}.brand span{color:var(--green)}
+    .nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.92rem}
+    .hero{background:var(--green);color:white;padding:64px 22px 58px}
+    .hero-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+    .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.75rem;font-weight:800;color:var(--lime)}
+    h1{font-size:clamp(2.3rem,5vw,4.2rem);line-height:1.02;letter-spacing:-2px;margin:14px 0}
+    .hero p{color:#e2eee7;max-width:570px;line-height:1.7}
+    .hero-card{background:#fff;color:var(--ink);padding:24px;border-radius:18px;box-shadow:0 18px 50px #092d1d55}
+    .hero-card strong{font-size:1.7rem;display:block;margin:6px 0}.hero-card small{color:var(--muted)}
+    .search{display:flex;gap:8px;margin-top:22px}.search input{flex:1;min-width:0}
+    input,select{font:inherit;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:white;width:100%;color:var(--ink)}
+    button,.btn{border:0;border-radius:10px;padding:13px 17px;background:var(--lime);color:#17231d;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;justify-content:center;align-items:center}
+    button:hover,.btn:hover{filter:brightness(.96)} .btn-dark{background:var(--green);color:#fff}
+    main{max-width:1120px;margin:42px auto;padding:0 22px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
+    h2{font-size:1.8rem;letter-spacing:-.8px;margin:0 0 7px}.sub{color:var(--muted);margin:0;line-height:1.5}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 22px}.filters input{max-width:340px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .service{background:#fff;border:1px solid var(--line);border-radius:15px;padding:19px;display:flex;flex-direction:column;min-height:190px}
+    .service .emoji{font-size:1.7rem}.service h3{margin:12px 0 7px}.service p{color:var(--muted);font-size:.9rem;line-height:1.5;margin:0 0 15px}
+    .price{font-weight:900;color:var(--green);margin-top:auto}.unit{font-size:.78rem;color:var(--muted);font-weight:500}
+    .calculator{display:grid;grid-template-columns:1fr 1fr;gap:24px;background:#fff;border:1px solid var(--line);padding:25px;border-radius:18px;margin-top:48px}
+    .fields{display:grid;gap:13px}.field label{display:block;font-size:.86rem;font-weight:800;margin-bottom:7px}
+    .estimate{background:#eff7e7;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:center}
+    .estimate .amount{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--green);letter-spacing:-1px;margin:8px 0}
+    .note{font-size:.82rem;color:var(--muted);line-height:1.55}
+    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 48px}
+    .step{padding:18px;border:1px solid var(--line);background:#fff;border-radius:14px}.step b{color:var(--green);font-size:1.2rem}
+    .cta{background:#17231d;color:white;padding:30px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:48px}
+    .cta p{color:#cbd6ce;margin-bottom:0}
+    footer{padding:25px 22px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+    @media(max-width:760px){.hero-inner,.calculator{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.how{grid-template-columns:1fr}.cta{align-items:flex-start;flex-direction:column}.nav nav{display:flex;gap:12px}}
+    @media(max-width:480px){.grid{grid-template-columns:1fr}.hero{padding-top:45px}.search{flex-direction:column}.section-head{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">workman<span>.</span></div>
+    <nav><a href="#services">Services</a> &nbsp; <a href="#estimate">Cost estimator</a></nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Nigeria's home services directory</div>
+      <h1>Good work.<br>Fair estimates.</h1>
+      <p>Find help for repairs, installations and building work. Explore common services and get a quick budget estimate in naira before you book.</p>
+      <div class="search"><input id="heroSearch" placeholder="Search plumbing, roofing, Wi-Fi..." aria-label="Search services"><button onclick="searchServices()">Find a service</button></div>
+    </div>
+    <div class="hero-card"><small>Plan your next home project</small><strong>Know the likely cost before work begins.</strong><p class="sub">Compare indicative price ranges and request a proper on-site quotation from a qualified artisan.</p><a class="btn btn-dark" href="#estimate">Calculate an estimate</a></div>
+  </div>
+</section>
+<main>
+  <section id="services">
+    <div class="section-head"><div><h2>Popular services</h2><p class="sub">Starting price guides in Nigerian naira (₦).</p></div></div>
+    <div class="filters"><input id="serviceSearch" placeholder="Filter services..." oninput="renderServices()" aria-label="Filter services"><select id="categoryFilter" onchange="renderServices()" aria-label="Filter by category"><option value="all">All categories</option><option>Repairs</option><option>Installation</option><option>Building</option><option>Electrical</option></select></div>
+    <div class="grid" id="serviceGrid"></div>
+  </section>
+
+  <section id="estimate" class="calculator">
+    <div>
+      <h2>Quick cost estimator</h2><p class="sub">Choose a service and enter the quantity to get an indicative budget.</p>
+      <div class="fields" style="margin-top:20px">
+        <div class="field"><label for="estimateService">Service</label><select id="estimateService" onchange="calculate()"></select></div>
+        <div class="field"><label for="quantity">Quantity / units</label><input id="quantity" type="number" min="1" value="1" oninput="calculate()"></div>
+        <div class="field"><label for="location">Your city or state</label><input id="location" placeholder="e.g. Ikeja, Lagos"></div>
+      </div>
+    </div>
+    <div class="estimate">
+      <small>Estimated service budget</small><div class="amount" id="estimateAmount">₦0</div>
+      <p id="estimateRange" class="sub">Select a service to see the range.</p>
+      <p class="note">This is a planning estimate, not a binding quote. Actual prices depend on location, site conditions, materials, labour, transport and job complexity. Confirm costs with the artisan before work starts.</p>
+      <a id="whatsappLink" class="btn btn-dark" href="#" target="_blank" rel="noopener">Request a quotation on WhatsApp</a>
+    </div>
+  </section>
+
+  <section style="margin-top:48px">
+    <h2>How Workman works</h2>
+    <div class="how">
+      <div class="step"><b>01</b><h3>Choose a service</h3><p class="sub">Find the type of artisan or installation you need.</p></div>
+      <div class="step"><b>02</b><h3>Check your estimate</h3><p class="sub">Use the estimator to plan a rough budget.</p></div>
+      <div class="step"><b>03</b><h3>Request a quote</h3><p class="sub">Send your job details and agree the final price before work begins.</p></div>
+    </div>
+  </section>
+  <section class="cta"><div><h2>Need a reliable artisan?</h2><p>Send your job details and request a direct quotation.</p></div><a class="btn" id="contactLink" href="#" target="_blank" rel="noopener">Contact Workman</a></section>
+</main>
+<footer>© <span id="year"></span> Workman Nigeria. Price guides are indicative and should be locally verified.</footer>
+<script>
+  // EDIT THIS NUMBER: use your WhatsApp number with country code, digits only.
+  // Example Nigeria: 2348012345678 (do not include + or spaces).
+  const WHATSAPP_NUMBER = "2348012345678";
+
+  // EDIT THESE PRICE RANGES to match your city, artisans and current market.
+  // Prices are illustrative starter estimates in NGN, not verified market quotations.
+  const services = [
+    {name:"Plumbing repairs",cat:"Repairs",emoji:"🚰",unit:"per visit / minor job",min:15000,max:45000,desc:"Leaking taps, blocked sinks, pipe repairs and fittings."},
+    {name:"Plumbing installation",cat:"Installation",emoji:"🔧",unit:"per fixture",min:20000,max:65000,desc:"Install sinks, toilets, showers and water lines."},
+    {name:"Tiling",cat:"Building",emoji:"▦",unit:"per square metre (labour)",min:5000,max:12000,desc:"Floor and wall tile laying; materials usually separate."},
+    {name:"DSTV installation",cat:"Installation",emoji:"📡",unit:"per setup (labour)",min:15000,max:40000,desc:"Dish mounting, cabling, decoder setup and signal alignment."},
+    {name:"Wi-Fi installation",cat:"Installation",emoji:"📶",unit:"per setup (labour)",min:15000,max:50000,desc:"Router setup, coverage checks and basic network configuration."},
+    {name:"Roofing",cat:"Building",emoji:"🏠",unit:"per square metre (labour)",min:8000,max:20000,desc:"Roof installation or repair; structure and materials affect cost."},
+    {name:"Electrical repairs",cat:"Repairs",emoji:"💡",unit:"per visit / minor job",min:15000,max:50000,desc:"Fault finding, switches, sockets and minor wiring repairs."},
+    {name:"Electrical installation",cat:"Electrical",emoji:"⚡",unit:"per point (labour)",min:8000,max:20000,desc:"New lighting, sockets and wiring points."},
+    {name:"Painting",cat:"Building",emoji:"🖌️",unit:"per square metre (labour)",min:1500,max:4500,desc:"Interior and exterior painting; preparation may cost extra."},
+    {name:"POP ceiling",cat:"Building",emoji:"🏗️",unit:"per square metre (labour)",min:7000,max:16000,desc:"Suspended ceiling installation and finishing."},
+    {name:"Carpentry",cat:"Repairs",emoji:"🪚",unit:"per job",min:20000,max:80000,desc:"Door repairs, shelves, cabinets and woodwork."},
+    {name:"AC installation",cat:"Installation",emoji:"❄️",unit:"per unit (labour)",min:25000,max:70000,desc:"Air-conditioner mounting, piping and commissioning."}
+  ];
+  const naira = n => "₦" + Math.round(n).toLocaleString("en-NG");
+  function renderServices(){
+    const q=document.getElementById("serviceSearch").value.toLowerCase();
+    const cat=document.getElementById("categoryFilter").value;
+    const list=services.filter(s=>(s.name+" "+s.desc).toLowerCase().includes(q)&&(cat==="all"||s.cat===cat));
+    document.getElementById("serviceGrid").innerHTML=list.map(s=>`
+      <article class="service"><div class="emoji">${s.emoji}</div><h3>${s.name}</h3><p>${s.desc}</p>
+      <div class="price">${naira(s.min)} – ${naira(s.max)} <span class="unit">${s.unit}</span></div></article>`).join("") || "<p>No services match your search.</p>";
+  }
+  function fillSelect(){
+    document.getElementById("estimateService").innerHTML=services.map((s,i)=>`<option value="${i}">${s.name}</option>`).join("");
+    calculate();
+  }
+  function calculate(){
+    const s=services[Number(document.getElementById("estimateService").value)||0];
+    const qty=Math.max(1,Number(document.getElementById("quantity").value)||1);
+    const low=s.min*qty, high=s.max*qty;
+    document.getElementById("estimateAmount").textContent=naira((low+high)/2);
+    document.getElementById("estimateRange").textContent=`Likely range: ${naira(low)} – ${naira(high)} (${qty} unit${qty>1?"s":""})`;
+    const city=document.getElementById("location").value.trim()||"your area";
+    const msg=`Hello Workman, I need a quotation for ${s.name}. Quantity: ${qty}. Location: ${city}. The website estimate is ${naira(low)} to ${naira(high)}. Please confirm the final cost and availability.`;
+    document.getElementById("whatsappLink").href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+  function searchServices(){document.getElementById("serviceSearch").value=document.getElementById("heroSearch").value;renderServices();document.getElementById("services").scrollIntoView({behavior:"smooth"});}
+  document.getElementById("contactLink").href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello Workman, I would like to make an enquiry.")}`;
+  document.getElementById("year").textContent=new Date().getFullYear();
+  renderServices();fillSelect();
+</script>
+</body>
+</html>
